@@ -1,14 +1,4 @@
-//Wayne Barnett |	Founder & CEO        |	wayne-barnett-founder-ceo.jpg
-//Angela Caroll |	Chief Editor         |	angela-caroll-chief-editor.jpg
-//Walter Gordon |	Office Manager       |	walter-gordon-office-manager.jpg
-//Angela Lopez  |	Social Media Manager |	angela-lopez-social-media-manager.jpg
-//Scott Estrada |	Developer            |	scott-estrada-developer.jpg
-//Barbara Ramos |	Graphic Designer     |	barbara-ramos-graphic-designer.jpg
-
-const nameElement = document.getElementById("name");
-const positionElement = document.getElementById("position");
-const pictureElement = document.getElementById("picture");
-const card = document.querySelector(".card");
+const row = document.querySelector(".row");
 
 const team = [
   {
@@ -44,11 +34,18 @@ const team = [
 ];
 
 for (let i = 0; i < team.length; i++) {
-  for (let key in team[i]) {
-    const p = document.createElement("p");
-    p.innerText = key + ": " + team[i][key];
-    card.appendChild(p);
-    console.log(key, ":", team[i][key]);
-  }
-  console.log("----------------------------------------");
+  const col = document.createElement("div");
+  col.className = "col-12 col-md-6 col-lg-4";
+
+  const card = document.createElement("div");
+  card.classList.add("card", "my-5", "p-2", "text-center", "shadow");
+
+  card.innerHTML = `
+  <img src="img/${team[i].picture}"> 
+  <h4 class="mt-3">${team[i].name}</h4>
+  <p>${team[i].position}</p>
+   `;
+
+  col.appendChild(card);
+  row.appendChild(col);
 }
