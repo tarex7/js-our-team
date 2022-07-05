@@ -5,6 +5,11 @@
 //Scott Estrada |	Developer            |	scott-estrada-developer.jpg
 //Barbara Ramos |	Graphic Designer     |	barbara-ramos-graphic-designer.jpg
 
+const nameElement = document.getElementById("name");
+const positionElement = document.getElementById("position");
+const pictureElement = document.getElementById("picture");
+const card = document.querySelector(".card");
+
 const team = [
   {
     name: "Wayne Barnett",
@@ -40,6 +45,10 @@ const team = [
 
 for (let i = 0; i < team.length; i++) {
   for (let key in team[i]) {
+    const p = document.createElement("p");
+    p.innerText = key + ": " + team[i][key];
+    card.appendChild(p);
     console.log(key, ":", team[i][key]);
   }
+  console.log("----------------------------------------");
 }
